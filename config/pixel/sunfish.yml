@@ -1,0 +1,8 @@
+device:
+  name: sunfish
+
+platform:
+  product_makefile: device/google/sunfish/aosp_sunfish.mk
+
+includes:
+  - snippets/2020.yml

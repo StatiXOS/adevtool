@@ -3,3 +3,4 @@ type: device-list
 devices:
   - redfin.yml
   - bramble.yml
+  - sunfish.yml
