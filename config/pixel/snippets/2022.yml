@@ -22,6 +22,13 @@ filters:
       - ldfw
       - modem
 
+  files:
+    match:
+      - product/etc/sysconfig/pixel_experience_2021.xml
+      - product/etc/sysconfig/pixel_experience_2021_midyear.xml
+      - product/etc/sysconfig/pixel_experience_2022.xml
+      - product/etc/sysconfig/pixel_experience_2022_midyear.xml
+
   dep_files:
     match:
       # Required for building ARM NN HAL
