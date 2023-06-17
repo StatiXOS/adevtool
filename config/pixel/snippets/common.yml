@@ -119,6 +119,9 @@ filters:
 
   files:
     match:
+      # P21/22
+      - product/app/WallpaperEmojiPrebuilt/WallpaperEmojiPrebuilt.apk
+
       # P20
       - product/app/DevicePolicyPrebuilt/DevicePolicyPrebuilt.apk
       - product/app/DeviceStatisticsService/DeviceStatisticsService.apk
