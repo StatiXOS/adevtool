@@ -187,6 +187,7 @@ filters:
       - product/etc/fonts_customization.xml
 
       # Beta
+      - system/app/GoogleBluetoothLegacyMigration/GoogleBluetoothLegacyMigration.apk
       - system/app/BluetoothMigrationForBeta3User/BluetoothMigrationForBeta3User.apk
       - system_ext/priv-app/YadaYada/YadaYada.apk
       - product/priv-app/BetaFeedback/BetaFeedback.apk
