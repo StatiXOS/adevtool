@@ -77,7 +77,6 @@ filters:
       - product/app/YouTube/YouTube.apk
       - product/app/YouTubeMusicPrebuilt/YouTubeMusicPrebuilt.apk
       - product/priv-app/AndroidAutoStubPrebuilt/AndroidAutoStubPrebuilt.apk
-      - product/priv-app/AmbientStreaming/AmbientStreaming.apk
       - product/priv-app/CarrierServices/CarrierServices.apk
       - product/priv-app/DeviceIntelligenceNetworkPrebuilt/DeviceIntelligenceNetworkPrebuilt.apk
       - product/priv-app/DreamlinerPrebuilt/DreamlinerPrebuilt.apk

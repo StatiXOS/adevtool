@@ -44,6 +44,7 @@ filters:
       - product/etc/preferred-apps/google.xml
       - product/etc/sysconfig/google-staged-installer-whitelist.xml
       - product/framework/com.google.android.dialer.support.jar
+      - product/priv-app/AmbientStreaming/AmbientStreaming.apk
       - product/priv-app/AndroidAutoStubPrebuilt/AndroidAutoStubPrebuilt.apk
       - product/priv-app/ConfigUpdater/ConfigUpdater.apk
       - product/priv-app/DeviceIntelligenceNetworkPrebuilt/DeviceIntelligenceNetworkPrebuilt.apk
