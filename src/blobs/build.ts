@@ -10,7 +10,6 @@ import {
   serializeBoardMakefile,
   serializeModulesMakefile,
   serializeDeviceMakefile,
-  Symlink,
   ProductsMakefile,
   ProductMakefile,
   serializeProductMakefile,
@@ -22,6 +21,7 @@ import {
   SharedLibraryModule,
   SoongBlueprint,
   SoongModule,
+  Symlink,
   SPECIAL_FILE_EXTENSIONS,
   TYPE_SHARED_LIBRARY,
 } from '../build/soong'
@@ -87,10 +87,11 @@ export async function generateBuild(
     let stat = await fs.lstat(srcPath)
 
     if (stat.isSymbolicLink()) {
-      // Symlink -> Make module, regardless of file extension
+      // Symlink -> Soong module, regardless of file extension
 
       let targetPath = await fs.readlink(srcPath)
-      let moduleName = `symlink__${sanitizeBasename(entry.srcPath)}`
+      const crypto = require('crypto');
+      let moduleName = `symlink_${crypto.randomBytes(4).toString('hex')}`;
 
       // Create link info
       symlinks.push({
@@ -155,12 +156,13 @@ export async function generateBuild(
 
   let buildPackages = Array.from(namedModules.keys())
   if (symlinks.length > 0) {
-    buildPackages.push('device_symlinks')
+    buildPackages.push(...symlinks.map(l => l.moduleName))
   }
 
   return {
     rootBlueprint: {
       namespace: true,
+      symlinks,
     },
     proprietaryBlueprint: {
       modules: namedModules.values(),
@@ -168,7 +170,6 @@ export async function generateBuild(
     modulesMakefile: {
       device,
       vendor,
-      symlinks,
     },
     deviceMakefile: {
       namespaces: [dirs.out],

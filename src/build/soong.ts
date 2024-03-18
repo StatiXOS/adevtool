@@ -118,10 +118,19 @@ export type SoongModule = {
   _entry?: BlobEntry
 } & SoongModuleSpecific
 
+export interface Symlink {
+  moduleName: string
+  linkPartition: string
+  linkSubpath: string
+  targetPath: string
+}
+
 export interface SoongBlueprint {
   namespace?: boolean
 
   modules?: Iterable<SoongModule>
+
+  symlinks: Array<Symlink>
 }
 
 function getRelativeInstallPath(entry: BlobEntry, pathParts: Array<string>, installDir: string) {
@@ -343,6 +352,28 @@ export function serializeBlueprint(bp: SoongBlueprint) {
         _type: 'soong_namespace',
       }),
     )
+
+    if (bp.symlinks.length > 0) {
+      for (let link of bp.symlinks) {
+        const partitionKeyMap = {
+          'system_ext': 'system_ext_specific',
+          'odm': 'device_specific',
+          'product': 'product_specific',
+          'vendor': 'vendor',
+        };
+        const partition = partitionKeyMap[link.linkPartition];
+        let module = {
+          _type: 'install_symlink',
+          name: link.moduleName,
+          installed_location: link.linkSubpath,
+          symlink_target: link.targetPath,
+        };
+        if (partition) {
+          module[partition] = true;
+        }
+        serializedModules.push(serializeModule(module));
+      }
+    }
   }
 
   if (bp.modules != undefined) {

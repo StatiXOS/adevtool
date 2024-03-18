@@ -22,20 +22,11 @@ const VINTF_MANIFEST_PARTITION_VARS: { [part: string]: string } = {
   odm: 'ODM_MANIFEST_FILES',
 }
 
-export interface Symlink {
-  moduleName: string
-  linkPartition: string
-  linkSubpath: string
-  targetPath: string
-}
-
 export interface ModulesMakefile {
   device: string
   vendor: string
 
   radioFiles?: Array<string>
-
-  symlinks: Array<Symlink>
 }
 
 export interface BoardMakefile {
@@ -101,30 +92,6 @@ export function serializeModulesMakefile(mk: ModulesMakefile) {
 
   if (mk.radioFiles != undefined) {
     blocks.push(mk.radioFiles.map(img => `$(call add-radio-file,${img})`).join('\n'))
-  }
-
-  if (mk.symlinks.length > 0) {
-    let mkdirCmds = new Set<string>()
-    let linkCmds = []
-    for (let link of mk.symlinks) {
-      let destPath = `$(PRODUCT_OUT)/${link.linkPartition}/${link.linkSubpath}`
-      mkdirCmds.add(`mkdir -p ${dirname(destPath)};`)
-      linkCmds.push(`ln -sf ${link.targetPath} ${destPath};`)
-    }
-
-    blocks.push(`include $(CLEAR_VARS)
-LOCAL_MODULE := device_symlinks
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_OWNER := ${mk.vendor}
-LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)
-LOCAL_MODULE_STEM := .device_symlinks
-LOCAL_SRC_FILES := Android.mk
-LOCAL_POST_INSTALL_CMD := \\
-    ${Array.from(mkdirCmds).join(CONT_SEPARATOR)} \\
-    ${linkCmds.join(CONT_SEPARATOR)} \\
-    rm -f $(TARGET_OUT_VENDOR_ETC)/.device_symlinks
-include $(BUILD_PREBUILT)`)
   }
 
   blocks.push('endif')
