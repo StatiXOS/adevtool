@@ -78,14 +78,12 @@ filters:
       - product/app/YouTubeMusicPrebuilt/YouTubeMusicPrebuilt.apk
       - product/priv-app/AndroidAutoStubPrebuilt/AndroidAutoStubPrebuilt.apk
       - product/priv-app/CarrierServices/CarrierServices.apk
-      - product/priv-app/DeviceIntelligenceNetworkPrebuilt/DeviceIntelligenceNetworkPrebuilt.apk
       - product/priv-app/DreamlinerPrebuilt/DreamlinerPrebuilt.apk
       - product/priv-app/EuiccGoogle/EuiccGoogle.apk
       - product/priv-app/FilesPrebuilt/FilesPrebuilt.apk
       - product/priv-app/GCS/GCS.apk
       - product/priv-app/GoogleCamera/GoogleCamera.apk
       - product/priv-app/GoogleDialer/GoogleDialer.apk
-      - product/priv-app/GoogleRestorePrebuilt/GoogleRestorePrebuilt.apk
       - product/priv-app/HealthConnectPrebuilt/HealthConnectPrebuilt.apk
       - product/priv-app/HelpRtcPrebuilt/HelpRtcPrebuilt.apk
       - product/priv-app/MaestroPrebuilt/MaestroPrebuilt.apk
@@ -96,11 +94,9 @@ filters:
       - product/priv-app/PrebuiltGmsCore/PrebuiltGmsCoreSc.apk
       - product/priv-app/RecorderPrebuilt/RecorderPrebuilt.apk
       - product/priv-app/SafetyHubPrebuilt/SafetyHubPrebuilt.apk
-      - product/priv-app/SCONE/SCONE.apk
       - product/priv-app/ScribePrebuilt/ScribePrebuilt.apk
       - product/priv-app/SecurityHubPrebuilt/SecurityHubPrebuilt.apk
       - product/priv-app/SettingsIntelligenceGooglePrebuilt/SettingsIntelligenceGooglePrebuilt.apk
-      - product/priv-app/TipsPrebuilt/TipsPrebuilt.apk
       - product/priv-app/TurboPrebuilt/TurboPrebuilt.apk
       - product/priv-app/Velvet/Velvet.apk
       - product/priv-app/WellbeingPrebuilt/WellbeingPrebuilt.apk
@@ -112,6 +108,8 @@ filters:
       - product/app/PixelCameraServices
       # Another app updated by Play Store on stock
       - product/priv-app/DevicePersonalizationPrebuiltPixel
+      - product/priv-app/SCONE
+      - product/priv-app/TipsPrebuilt
 
   sepolicy_dirs:
     match:
@@ -120,9 +118,6 @@ filters:
 
   files:
     match:
-      # P21/22
-      - product/app/WallpaperEmojiPrebuilt/WallpaperEmojiPrebuilt.apk
-
       # P20
       - product/app/DevicePolicyPrebuilt/DevicePolicyPrebuilt.apk
       - product/app/DeviceStatisticsService/DeviceStatisticsService.apk
@@ -215,10 +210,21 @@ filters:
       # AI Core (P21+)
       - product/priv-app/AICorePrebuilt/AICorePrebuilt.apk
 
+      # Device diagnostics
+      - system/priv-app/DeviceDiagnostics/DeviceDiagnostics.apk
+
+      # Circle to search
+      - product/priv-app/SearchSelectorPrebuilt/SearchSelectorPrebuilt.apk
+
+      - product/priv-app/TetheringEntitlement/TetheringEntitlement.apk
+
+      - system/bin/oem-iptables-init.sh
+
     prefix:
       # (Live) wallpapers
       - product/app/WallpapersBReel
       - product/app/PixelWallpapers
+      - product/app/WallpaperEmojiPrebuilt
 
       # P20
       - product/etc/security/
@@ -232,6 +238,17 @@ filters:
 
       # Clocks
       - system_ext/priv-app/SystemUIClocks
+
+      # SUW
+      - system_ext/priv-app/SetupWizardPixelPrebuilt
+
+      - product/priv-app/CarrierSettings
+      - product/priv-app/DeviceIntelligenceNetworkPrebuilt
+      - product/priv-app/GoogleRestorePrebuilt
+
+      # Charger
+      - vendor/etc/res/images/charger
+      - vendor/etc/res/values/charger
 
   overlay_keys:
     match:

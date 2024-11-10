@@ -14,8 +14,6 @@ filters:
 
   files:
     match:
-      - product/app/arcore/arcore.apk
-      - product/app/CalculatorGooglePrebuilt/CalculatorGooglePrebuilt.apk
       - product/app/CalendarGooglePrebuilt/CalendarGooglePrebuilt.apk
       - product/app/Chrome-Stub/Chrome-Stub.apk
       - product/app/Chrome/Chrome.apk.gz
@@ -26,10 +24,10 @@ filters:
       - product/app/LatinIMEGooglePrebuilt/LatinIMEGooglePrebuilt.apk
       - product/app/LocationHistoryPrebuilt/LocationHistoryPrebuilt.apk
       - product/app/Maps/Maps.apk
+      - product/app/MarkupGoogle_v2/MarkupGoogle_v2.apk
       - product/app/ModuleMetadataGoogle/ModuleMetadataGoogle.apk
       - product/app/Photos/Photos.apk
       - product/app/PlayAutoInstallConfig/PlayAutoInstallConfig.apk
-      - product/app/PrebuiltDeskClockGoogle/PrebuiltDeskClockGoogle.apk
       - product/app/PrebuiltGmail/PrebuiltGmail.apk
       - product/app/talkback/talkback.apk
       - product/app/TrichromeLibrary-Stub/TrichromeLibrary-Stub.apk
@@ -56,11 +54,12 @@ filters:
       - product/priv-app/PartnerSetupPrebuilt/PartnerSetupPrebuilt.apk
       - product/priv-app/Phonesky/Phonesky.apk
       - product/priv-app/PrebuiltBugle/PrebuiltBugle.apk
-      - product/priv-app/RecorderPrebuilt/RecorderPrebuilt.apk
       - product/priv-app/ScribePrebuilt/ScribePrebuilt.apk
       - product/priv-app/SetupWizardPrebuilt/SetupWizardPrebuilt.apk
       - product/priv-app/Velvet/Velvet.apk
+      - product/priv-app/WallpaperEffect/WallpaperEffect.apk
       - product/priv-app/WellbeingPrebuilt/WellbeingPrebuilt.apk
+      - system_ext/priv-app/AvatarPickerGoogle/AvatarPickerGoogle.apk
       - system_ext/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk
       - system/etc/permissions/privapp-permissions-google.xml
       - system/priv-app/GoogleExtServices/GoogleExtServices.apk
@@ -72,11 +71,19 @@ filters:
       - system_ext/etc/permissions/privapp-permissions-google-se.xml
 
     prefix:
+      - product/app/arcore-
+      - product/app/CalculatorGooglePrebuilt_
+      - product/app/DevicePolicyPrebuilt-
+      - product/app/PrebuiltDeskClockGoogle_
+      - product/app/SoundAmplifierPrebuilt_
+      - product/app/SwitchAccessPrebuilt_
       - product/etc/security/fsverity/
       - product/etc/sysconfig/preinstalled-packages-
       - product/media/audio/ui/
       - product/priv-app/DevicePersonalizationPrebuiltPixel
-      -
+      - product/priv-app/RecorderPrebuilt_
+      - product/priv-app/ScribePrebuilt_
+      - product/priv-app/TipsPrebuilt_
       - product/priv-app/PrebuiltGmsCore/
       - product/usr/share/ime/google/
       - product/usr/srec/
