@@ -1,0 +1,26 @@
+platform:
+  sepolicy_dirs:
+    - device/google/zumapro-sepolicy
+
+includes:
+  - common.yml
+
+filters:
+  partitions:
+    match:
+      # TODO: add support for OTA firmware partitions
+      - bl1
+      - pbl
+      - bl2
+      - abl
+      - bl31
+      - tzsw
+      - gsa
+      - ldfw
+      - modem
+
+  dep_files:
+    match:
+      # Required for building ARM NN HAL
+      - vendor/lib/libOpenCL.so
+      - vendor/lib64/libOpenCL.so
