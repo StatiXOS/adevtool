@@ -45,6 +45,8 @@ filters:
       - product/priv-app/AmbientStreaming/AmbientStreaming.apk
       - product/priv-app/AndroidAutoStubPrebuilt/AndroidAutoStubPrebuilt.apk
       - product/priv-app/ConfigUpdater/ConfigUpdater.apk
+      # P23
+      - product/priv-app/CreativeAssistant/CreativeAssistant.apk
       - product/priv-app/DeviceIntelligenceNetworkPrebuilt/DeviceIntelligenceNetworkPrebuilt.apk
       - product/priv-app/FilesPrebuilt/FilesPrebuilt.apk
       - product/priv-app/GCS/GCS.apk
@@ -74,6 +76,7 @@ filters:
       - product/app/arcore-
       - product/app/CalculatorGooglePrebuilt_
       - product/app/DevicePolicyPrebuilt-
+      - product/app/MeetPrebuilt_
       - product/app/PrebuiltDeskClockGoogle_
       - product/app/SoundAmplifierPrebuilt_
       - product/app/SwitchAccessPrebuilt_
